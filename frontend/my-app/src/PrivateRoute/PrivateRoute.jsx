@@ -7,11 +7,12 @@ const {token,isAuth}=useSelector(state=>state.AuthReducer)
 console.log(isAuth,token)
 const navigate=useNavigate()
   useEffect(() => {
-    if (!isAuth) {
+    if (token=='null'||token==null) {
       navigate('/');
+      alert("Please login first to visit...")
     }
-  }, [isAuth, navigate]);
+  }, [token, navigate]);
 
-  return isAuth ? children : <Navigate to="/login" replace />;
+  return token ? children : <Navigate to="/login" replace />;
 
 }

@@ -3,8 +3,14 @@ import { BurgerMenu } from "./BurgerMenu"
 import { useEffect,   useState } from "react"
 import {Link} from "react-router-dom"
 import { LOGOUT } from "../Redux/AuthRedux/Auth.Action.Types"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import jwtDecode from 'jwt-decode';
 export const Navbar=()=>{
+   const  {token} =useSelector(state=>state.AuthReducer  );
+   
+  
+  
+   
    const dispatch=useDispatch()
     const [width,setWidth]=useState(814)
    //api key= AIzaSyCo5dRloWorweRBz_uzpDh6MoI7bKLsfDA
@@ -30,9 +36,9 @@ export const Navbar=()=>{
       
      {width<814?true: <Stack direction='row' spacing={4} align='center'> 
   <Link to={"/home"}>  <Button colorScheme='teal' variant='solid'>
-  Home
+ Cart
      </Button></Link>
-  <Link to={'/blog'}> <Button colorScheme='black' variant='solid'>
+  <Link to={'/book'}> <Button colorScheme='black' variant='solid'>
    Blog
   </Button></Link>
  <Link to="/login">  <Button colorScheme='black' variant='solid'>
@@ -41,9 +47,9 @@ export const Navbar=()=>{
   <Link to="/"> <Button colorScheme='black' variant='solid'>
     Signup
   </Button></Link>
-  <Link  > <Button onClick={()=>dispatch({type:LOGOUT})} colorScheme='black' variant='solid'>
+   {token? <Link  > <Button onClick={()=>dispatch({type:LOGOUT})} colorScheme='black' variant='solid'>
     Logout
-  </Button></Link>
+  </Button></Link>:null }
       </Stack>
 }  
       </Box>

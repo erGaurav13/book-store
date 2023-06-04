@@ -44,13 +44,13 @@ export const Books=()=>{
     return  <Box value={80} mt="20%" ml="45%" >Loading...</Box>
    }
 
-     return  <Box pt="10px" >
+     return  <Box pt="10px" fontFamily={"'Poppins', sans-serif;"} >
               <Box m="auto" border="2px solid black" w="50%"  > <Input type="text" onChange={handelChange}   w="100%"  placeholder="  search Your Book Here..." />  </Box>
     <Box w="100%" bg="#f0f0f0" pt="10px"> <SimpleGrid    columns={[1, 2, 3]} spacing={10} w="80%" m="auto"  >
                  
                 
                 {bookData?.map((e,i)=>{
-                    return   <Box  boxShadow='dark-lg'  bg="white" p="10px"   > <Card data={e} key={Date.now()+i}/> </Box>  
+                    return   <Box  boxShadow='dark-lg'  bg="white" p="10px"  key={Date.now()+i} > <Card data={e} /> </Box>  
                 })}
               
     </SimpleGrid></Box> 
