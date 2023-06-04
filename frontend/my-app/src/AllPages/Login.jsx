@@ -4,6 +4,7 @@ import {
     FormLabel,Input  ,Button,Heading
    
   } from '@chakra-ui/react'
+import {useNavigate} from "react-router-dom" 
 import { Image } from '@chakra-ui/react'
 import { ChakraProvider,   } from "@chakra-ui/react";
 import { useState } from 'react';
@@ -17,7 +18,9 @@ export const Login=()=>{
 
 const [state,setState]=useState(init)
 const { login_loading,isAuth,token}=useSelector(state=>state.AuthReducer )
+
 console.log( login_loading,isAuth,token)
+const navigate=useNavigate()
 const dispatch=useDispatch() 
 const handelChange=(e)=>{
   const {name,value}=e.target; 
@@ -28,6 +31,10 @@ const handelSubmit=(e)=>{
     dispatch(login(state))
 }
 
+if(token){
+  navigate("/book")
+  return
+}
  
 return  <ChakraProvider >
     <Box display={"flex"}  >

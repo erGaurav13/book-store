@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { Box , SimpleGrid, Text,Image, Button} from "@chakra-ui/react"
 import { Card2 } from "../Component/Card2";
 import { ChakraProvider } from "@chakra-ui/react"; 
+import { Link } from "react-router-dom";
 export const Cart=()=>{
    let cartdata=  JSON.parse(localStorage.getItem("cart"))||[];
    const [data,setData]=useState(cartdata)
@@ -17,7 +18,7 @@ export const Cart=()=>{
 
    return <ChakraProvider> <Box pt="10px" display={"flex"}  flexDir={{ base: "column-reverse", md: "row" }} fontFamily={"'Poppins', sans-serif;"}    >
    
-<Box w={{base:"100%",md:"80%",lg:"50%"}} bg="white" pt="10px"    boxShadow='dark-lg'> <SimpleGrid    columns={[1, 1, 2]} spacing={10} w="80%" m="auto"
+<Box w={{base:"100%",md:"80%",lg:"50%"}} bg="white" pt="10px"  backgroundColor={"blue.200"}  boxShadow='dark-lg'> <SimpleGrid    columns={[1, 1, 2]} spacing={10} w="80%" m="auto"
 >
       {/* cart item render here */}
      {data.length===0?<Image src="https://assets.materialup.com/uploads/16e7d0ed-140b-4f86-9b7e-d9d1c04edb2b/preview.png"/>:null}
@@ -39,7 +40,7 @@ export const Cart=()=>{
     <Text> Total price: {data.reduce((acc,e)=>{
       return acc+=+e.saleInfo.listPrice.amount},0)}
      </Text>
-     <Button bg="black" color="white">Checkout</Button>
+ <Link to="/checkout">    <Button bg="black" color="white">Checkout</Button></Link>
  </Box>
 
 </Box>

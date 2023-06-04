@@ -7,10 +7,7 @@ import { useDispatch, useSelector } from "react-redux"
 import jwtDecode from 'jwt-decode';
 export const Navbar=()=>{
    const  {token} =useSelector(state=>state.AuthReducer  );
-   
-  
-  
-   
+ 
    const dispatch=useDispatch()
     const [width,setWidth]=useState(814)
    //api key= AIzaSyCo5dRloWorweRBz_uzpDh6MoI7bKLsfDA
@@ -35,11 +32,11 @@ export const Navbar=()=>{
       <Box  w="30%" display={"block"} justifyContent={"space-around"}  p="0.8rem"> 
       
      {width<814?true: <Stack direction='row' spacing={4} align='center'> 
-  <Link to={"/home"}>  <Button colorScheme='teal' variant='solid'>
+  <Link to={"/cart"}>  <Button colorScheme='teal' variant='solid'>
  Cart
      </Button></Link>
   <Link to={'/book'}> <Button colorScheme='black' variant='solid'>
-   Blog
+ Book
   </Button></Link>
  <Link to="/login">  <Button colorScheme='black' variant='solid'>
     Login
