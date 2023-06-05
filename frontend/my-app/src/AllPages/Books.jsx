@@ -1,4 +1,4 @@
-import { Box,Input,Button,ChakraProvider} from "@chakra-ui/react"
+import { Box,Input,Button,ChakraProvider, Select} from "@chakra-ui/react"
 import { SimpleGrid } from '@chakra-ui/react'
 import { useEffect, useState  } from "react"
  
@@ -41,6 +41,27 @@ export const Books=()=>{
           getData(qry)
      },1000)
   }
+
+  const handleSortChange = (e) => {
+    const sortby = e.target.value;
+    if (sortby === "lowToHigh") {
+      const sortedData = bookData.sort((a, b) => {
+        const aPrice = a?.saleInfo?.listPrice?.amount || 0;
+        const bPrice = b?.saleInfo?.listPrice?.amount || 0;
+        return aPrice - bPrice;
+      });
+      setData([...sortedData]);
+    } else if (sortby === "highToLow") {
+      const sortedData = bookData.sort((a, b) => {
+        const aPrice = a?.saleInfo?.listPrice?.amount || 0;
+        const bPrice = b?.saleInfo?.listPrice?.amount || 0;
+        return bPrice - aPrice;
+      });
+      setData([...sortedData]);
+    }
+  };
+  
+
 // loading condition
    if(loading){
     return  <Box 
@@ -55,11 +76,15 @@ export const Books=()=>{
         Loading...</Box>
    }
 
-     return  <Box
+     return <ChakraProvider> <Box
              pt="10px"
              fontFamily={"'Poppins', sans-serif;"} 
             >
-
+            <Select   onChange={handleSortChange}>
+          <option value="">Sort By</option>
+          <option value="lowToHigh">Low to High</option>
+          <option value="highToLow">High to Low</option>
+        </Select>
               <Box 
               m="auto" 
               border="2px solid black" 
@@ -71,7 +96,7 @@ export const Books=()=>{
 
     <Box w="100%" bg="#f0f0f0" pt="10px">
          {/*For displaying Book data  */}
-    <SimpleGrid    columns={[1, 2, 3]} spacing={10} w="80%" m="auto"  >             
+    <SimpleGrid    columns={[1, 2, 4]} spacing={10} w="80%" m="auto"  >             
                 {/* Render Book Items */}
                 {bookData?.map((e,i)=>{
                     return   <Box  boxShadow='dark-lg'  bg="white" 
@@ -82,8 +107,9 @@ export const Books=()=>{
               
     </SimpleGrid>
     </Box> 
-    <ChakraProvider>
+    
     <Footer/>
-    </ChakraProvider>
+    
     </Box>
+    </ChakraProvider>
 }

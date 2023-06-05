@@ -31,9 +31,10 @@ export const signup = (info) => async (dispatch) => {
     let data = await axios.post(`${url}/api/register`, info);
     dispatch({ type: SIGNUP_SUCESS });
     alert(data.data.message);
+    // console.log(data,"D")
   } catch (e) {
     dispatch({ type: SIGNUP_FAILED });
     alert(e.response.data.message);
-//     console.log(e);
+    // console.log(e);
   }
 };
