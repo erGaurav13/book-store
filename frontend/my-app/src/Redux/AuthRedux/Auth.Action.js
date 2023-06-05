@@ -10,7 +10,7 @@ import {
 } from "./Auth.Action.Types";
 // dotenv.config()
 //  localhost url=http://localhost:8080
-// deployed url=
+// deployed url=https://ergaurav13-book-store.onrender.com
 let url = "http://localhost:8080";
 export const login = (info) => async (dispatch) => {
   console.log(info);

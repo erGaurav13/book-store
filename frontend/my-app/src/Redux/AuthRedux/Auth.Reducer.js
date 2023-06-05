@@ -1,6 +1,6 @@
 import { LOGIN_FAILED, LOGIN_REQUEST, LOGIN_SUCESS, LOGOUT, SIGNUP_FAILED, SIGNUP_REQUEST, SIGNUP_SUCESS } from "./Auth.Action.Types"
 
-const localStorageToken=JSON.parse((localStorage.getItem("token"))) || null
+const localStorageToken=((localStorage.getItem("token"))) || null
  console.log(localStorageToken,"S")
 const init={
     isAuth:localStorageToken!==null?true:false,
