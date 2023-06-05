@@ -15,16 +15,17 @@ Copy code
 Start the server by running the following command:
 Copy code
 node server.js
-Frontend Setup
-Open another terminal or command prompt.
-Navigate to the frontend/my-app directory of the project.
-Install the required dependencies by running the following command:
-Copy code
-npm install
-Start the frontend application by running the following command:
-arduino
+### Frontend Setup
+1. Open another terminal or command prompt.
+2. Navigate to the frontend/my-app directory of the project.
+3. Install the required dependencies by running the following command:
+  Copy code
+  npm install
+4. Start the frontend application by running the following command:
+ 
 Copy code
 npm run start
+
 Once both the backend server and frontend application are running, you can access the Book Store 
 app locally by opening a web browser and navigating to http://localhost:3000.
 
