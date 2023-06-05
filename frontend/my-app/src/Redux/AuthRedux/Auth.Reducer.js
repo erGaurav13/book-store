@@ -27,7 +27,7 @@ export const AuthReducer=(state=init,action)=>{
           }      
  
           case LOGIN_FAILED:{
-            localStorage.setItem("token",JSON.stringfy(null))
+           
             return  {...state, login_loading:false,isAuth:false,token:null}
           }
            
@@ -47,7 +47,7 @@ export const AuthReducer=(state=init,action)=>{
          }
 
          case LOGOUT:{
-          localStorage.setItem("token",JSON.stringfy(null))
+          localStorage.setItem("token",null)
           return {...state,isAuth:false,token:null}
        
        }
