@@ -1,7 +1,7 @@
 import { LOGIN_FAILED, LOGIN_REQUEST, LOGIN_SUCESS, LOGOUT, SIGNUP_FAILED, SIGNUP_REQUEST, SIGNUP_SUCESS } from "./Auth.Action.Types"
 
-const localStorageToken=(localStorage.getItem("token")) || null
- 
+const localStorageToken=JSON.parse((localStorage.getItem("token"))) || null
+ console.log(localStorageToken,"S")
 const init={
     isAuth:localStorageToken!==null?true:false,
     token:localStorageToken,
@@ -27,7 +27,7 @@ export const AuthReducer=(state=init,action)=>{
           }      
  
           case LOGIN_FAILED:{
-            localStorage.setItem("token",null)
+            localStorage.setItem("token",JSON.stringfy(null))
             return  {...state, login_loading:false,isAuth:false,token:null}
           }
            
@@ -47,7 +47,7 @@ export const AuthReducer=(state=init,action)=>{
          }
 
          case LOGOUT:{
-          localStorage.setItem("token",null)
+          localStorage.setItem("token",JSON.stringfy(null))
           return {...state,isAuth:false,token:null}
        
        }
