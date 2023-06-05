@@ -23,7 +23,9 @@ function Card({data}) {
 
    if(thumbnail!==undefined){
     return (
-        <  > <Link to={`/book/${id}`}>
+        <  >
+        {/* Making card for display Books */}
+           <Link to={`/book/${id}`}>
             <Image   src={thumbnail} w="100%"  h="280px" alt="" />
             <Text>Rs {amount||1999}</Text>
             <Text>Author :{volumeInfo.authors?.map((e,i)=>i==0?e:null)}</Text>

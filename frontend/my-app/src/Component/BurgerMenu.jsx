@@ -28,8 +28,8 @@ export function BurgerMenu() {
                  <Box onClick={handelOpen} display={"flex"} flexDirection={"column"} gap="10px" zIndex={20}  w="45%" h="100vh" backgroundColor="rgba(64,123,255,0.5)" float="right"   textAlign={"center"} pt="15%">
                  <NavLink  to="/book" > <Button     >Book</Button></NavLink>
                  <NavLink  to="/cart"  >  <Button  >Cart</Button></NavLink>
-                 <NavLink  to="/"  > <Button   >Signup</Button></NavLink>
-                 <NavLink  to="/login"  > <Button   >Login</Button></NavLink>
+              {!token?  <NavLink  to="/"  > <Button   >Signup</Button></NavLink>:null} 
+              {!token?  <NavLink  to="/login"  > <Button   >Login</Button></NavLink>:null}
                  {token? <NavLink  > <Button onClick={()=>dispatch({type:LOGOUT})}>
     Logout
   </Button></NavLink>:null }
