@@ -9,7 +9,8 @@ import {
   SIGNUP_SUCESS,
 } from "./Auth.Action.Types";
 // dotenv.config()
-
+//  localhost url=http://localhost:8080
+// deployed url=
 let url = "http://localhost:8080";
 export const login = (info) => async (dispatch) => {
   console.log(info);
